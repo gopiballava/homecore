@@ -18,7 +18,8 @@ jobs:
     working_directory: ~/repo/python
 
     steps:
-      - checkout ~/repo
+      - checkout 
+        path: ~/repo
 
 #      working_directory: ~/repo/python
 
