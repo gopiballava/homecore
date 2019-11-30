@@ -32,7 +32,8 @@ void wifi_setup()
 }
 
 void setup(void) {
-  Serial.begin(9600);
+  Serial.begin(115200);
+  wifi_setup();
 }
 
 void upload_temperature_reading(byte *addr, float temp_c)
