@@ -21,9 +21,17 @@ class doubleLink(object):
             new_head = Node(value, self.head, None)
             self.head.previous = new_head
             self.head = new_head
+        return self.head
     
     def moveToHead(self, node):
-        pass
+        if node.previous is not None:
+            node.previous.next = node.next
+        if node.next is not None:
+            node.next.previous = node.previous
+        node.previous = None
+        node.next = self.head
+        self.head.previous = node
+        self.head = node
     
     def popFromTail(self):
         if self.tail is None:

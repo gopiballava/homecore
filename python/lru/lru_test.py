@@ -1,9 +1,19 @@
 from .lru import doubleLink
 
 
-def test_double_link():
+def test_double_link_simple():
     dl = doubleLink()
     for i in range(10):
         dl.insertAtHead(i)
     for i in range(10):
+        assert dl.popFromTail() == i
+
+
+def test_double_link_move():
+    dl = doubleLink()
+    added = []
+    for i in range(5):
+        added.append(dl.insertAtHead(i))
+    dl.moveToHead(added[2])
+    for i in (0, 1, 3, 4, 2):
         assert dl.popFromTail() == i
