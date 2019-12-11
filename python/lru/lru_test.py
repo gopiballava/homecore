@@ -1,3 +1,5 @@
+import pytest
+
 from .lru import doubleLink, lruCache
 
 
