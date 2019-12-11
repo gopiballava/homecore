@@ -66,7 +66,7 @@ def test_older_lru():
     lrc.writeItem("a", 10)
     lrc.writeItem("b", 11)
     lrc.writeItem("c", 12)
-    with pytest.raises(ZeroDivisionError):
+    with pytest.raises(KeyError):
         assert lrc.readItem("a") == 10
     assert lrc.readItem("b") == 11
     assert lrc.readItem("c") == 12
