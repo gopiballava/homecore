@@ -40,7 +40,7 @@ def test_double_link_move():
     assert dl.popFromTail() is None
 
 
-def simple_lru():
+def test_simple_lru():
     lrc = lruCache()
     lrc.addItem("a", 10)
     lrc.addItem("b", 11)
