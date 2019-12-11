@@ -43,3 +43,27 @@ class doubleLink(object):
             self.tail = self.tail.previous
         return retv
         
+
+class lruCache(object):
+    def __init__(self, max_size=10):
+        self.max_size = max_size
+        # We store [node, value]
+        self.data = {}
+        # Double linked list of keys we might want to delete if we need more cache space
+        self.dll = doubleLink()
+
+    def writeItem(self, k, v):
+        if k in self.data:
+            # Already present, update value and LRU order
+            self.data[k][1] = v
+            self.dll.moveToHead(self.data[k][0])
+        else:
+            # New key!
+            node = self.dll.insertAtHead(k)
+            self.data[k] = [node, v]
+    
+    def readItem(self, k):
+        (node, v) = self.data[k]
+        self.dll.moveToHead(node)
+        return v
+            

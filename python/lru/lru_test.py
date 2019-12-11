@@ -1,4 +1,4 @@
-from .lru import doubleLink
+from .lru import doubleLink, lruCache
 
 
 def test_double_link_simple():
@@ -38,3 +38,13 @@ def test_double_link_move():
     for i in (0, 1, 2, 3, 4):
         assert dl.popFromTail() == i
     assert dl.popFromTail() is None
+
+
+def simple_lru():
+    lrc = lruCache()
+    lrc.addItem("a", 10)
+    lrc.addItem("b", 11)
+    lrc.addItem("c", 12)
+    assert lrc.readItem("a") == 10
+    assert lrc.readItem("b") == 11
+    assert lrc.readItem("c") == 12
