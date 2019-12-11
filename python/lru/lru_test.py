@@ -48,3 +48,23 @@ def test_simple_lru():
     assert lrc.readItem("a") == 10
     assert lrc.readItem("b") == 11
     assert lrc.readItem("c") == 12
+
+def test_change_lru():
+    lrc = lruCache()
+    lrc.writeItem("a", 10)
+    lrc.writeItem("b", 11)
+    lrc.writeItem("c", 12)
+    lrc.writeItem("a", 19)
+    assert lrc.readItem("a") == 19
+    assert lrc.readItem("b") == 11
+    assert lrc.readItem("c") == 12
+
+def test_older_lru():
+    lrc = lruCache(max_size=2)
+    lrc.writeItem("a", 10)
+    lrc.writeItem("b", 11)
+    lrc.writeItem("c", 12)
+    with pytest.raises(ZeroDivisionError):
+        assert lrc.readItem("a") == 10
+    assert lrc.readItem("b") == 11
+    assert lrc.readItem("c") == 12
