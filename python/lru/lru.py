@@ -1,4 +1,7 @@
 
+from recordclass import recordclass
+
+Node = recordclass('Node', 'value next previous')
 
 
 class doubleLink(object):
