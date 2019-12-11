@@ -14,12 +14,13 @@ class doubleLink(object):
         self.tail = None
     
     def insertAtHead(self, value):
-        new_head = Node(value, self.head, None)
-        if self.head is not None:
-            self.head.previous = new_head
-        self.head = new_head
-        if self.tail is None:
+        if self.tail is None and self.head is None:
+            self.head = Node(value, None, None)
             self.tail = self.head
+        else:
+            new_head = Node(value, self.head, None)
+            self.head.previous = new_head
+            self.head = new_head
     
     def moveToHead(self, node):
         pass
@@ -29,7 +30,7 @@ class doubleLink(object):
             raise NoNodesLeftException
         retv = self.tail.value
         if self.tail == self.head:
-            # Only one node.
+            # Only one node left, return it, list will be empty:
             self.tail = None
             self.head = None
         else:
