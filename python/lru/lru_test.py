@@ -42,9 +42,9 @@ def test_double_link_move():
 
 def test_simple_lru():
     lrc = lruCache()
-    lrc.addItem("a", 10)
-    lrc.addItem("b", 11)
-    lrc.addItem("c", 12)
+    lrc.writeItem("a", 10)
+    lrc.writeItem("b", 11)
+    lrc.writeItem("c", 12)
     assert lrc.readItem("a") == 10
     assert lrc.readItem("b") == 11
     assert lrc.readItem("c") == 12
