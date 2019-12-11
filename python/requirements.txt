@@ -6,4 +6,4 @@ flake8>=3.7.5
 alexandra
 # This is necessary for *reasons*
 cryptography<2.2
-
+recordclass
