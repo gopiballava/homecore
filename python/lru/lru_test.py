@@ -33,6 +33,7 @@ def test_double_link_move():
     added = []
     for i in range(5):
         added.append(dl.insertAtHead(i))
+    added.reverse()
     for i in range(5):
         dl.moveToHead(added[i])
     for i in (4, 3, 2, 1, 0):
