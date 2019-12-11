@@ -4,10 +4,6 @@ from recordclass import recordclass
 Node = recordclass('Node', 'value next previous')
 
 
-class NoNodesLeftException(Exception):
-    pass
-
-
 class doubleLink(object):
     def __init__(self):
         self.head = None
@@ -35,7 +31,7 @@ class doubleLink(object):
     
     def popFromTail(self):
         if self.tail is None:
-            raise NoNodesLeftException
+            return None
         retv = self.tail.value
         if self.tail == self.head:
             # Only one node left, return it, list will be empty:
