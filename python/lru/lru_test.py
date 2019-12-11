@@ -24,7 +24,9 @@ def test_double_link_move():
     added = []
     for i in range(5):
         added.append(dl.insertAtHead(i))
+    print(dl.head)
     dl.moveToHead(added[4])
+    print(dl.head)
     for i in (0, 1, 2, 3, 4):
         assert dl.popFromTail() == i
     assert dl.popFromTail() is None
