@@ -61,6 +61,9 @@ class lruCache(object):
             # New key!
             node = self.dll.insertAtHead(k)
             self.data[k] = [node, v]
+            if len(self.data) > self.max_size:
+                oldest_key = self.dll.popFromTail().value
+                del self.data[oldest_key]
     
     def readItem(self, k):
         (node, v) = self.data[k]
