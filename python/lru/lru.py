@@ -10,6 +10,11 @@ class doubleLink(object):
         self.tail = None
     
     def insertAtHead(self, value):
+        """
+        Creates a new node and inserts it at the head of our
+        double linked list.
+        Returns the node object that is at the new head.
+        """
         if self.tail is None and self.head is None:
             self.head = Node(value, None, None)
             self.tail = self.head
@@ -39,12 +44,13 @@ class doubleLink(object):
         """
         Return the value stored in the tail node of the list,
         which is the least recently accessed value.
+        Returns None if the list is empty.
         """
         if self.tail is None:
             return None
         retv = self.tail.value
         if self.tail == self.head:
-            # Only one node left, return it, list will be empty:
+            # Only one node left, return it, list will now be empty:
             self.tail = None
             self.head = None
         else:
@@ -55,14 +61,12 @@ class doubleLink(object):
 class lruCache(object):
     def __init__(self, max_size=10):
         self.max_size = max_size
-        # We store [node, value]
         self.data = {}
-        # Double linked list of keys we might want to delete if we need more cache space
         self.dll = doubleLink()
 
     def writeItem(self, k, v):
         if k in self.data:
-            # Already present, update value and LRU order
+            # Key is present, just update value and LRU order
             self.data[k][1] = v
             self.dll.moveToHead(self.data[k][0])
         else:
