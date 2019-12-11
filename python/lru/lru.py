@@ -20,6 +20,10 @@ class doubleLink(object):
         return self.head
 
     def moveToHead(self, node):
+        """
+        Move a pre-existing node to the head of the list,
+        making it the most recently used element.
+        """
         # We'll do nothing if it's already head:
         if self.head is not node:
             if node.previous is not None:
@@ -32,6 +36,10 @@ class doubleLink(object):
             self.head = node
         
     def popFromTail(self):
+        """
+        Return the value stored in the tail node of the list,
+        which is the least recently accessed value.
+        """
         if self.tail is None:
             return None
         retv = self.tail.value

@@ -51,6 +51,7 @@ def test_simple_lru():
     assert lrc.readItem("b") == 11
     assert lrc.readItem("c") == 12
 
+
 def test_change_lru():
     lrc = lruCache()
     lrc.writeItem("a", 10)
@@ -61,11 +62,24 @@ def test_change_lru():
     assert lrc.readItem("b") == 11
     assert lrc.readItem("c") == 12
 
+
 def test_older_lru():
     lrc = lruCache(max_size=2)
     lrc.writeItem("a", 10)
     lrc.writeItem("b", 11)
     lrc.writeItem("c", 12)
+    with pytest.raises(KeyError):
+        assert lrc.readItem("a") == 10
+    assert lrc.readItem("b") == 11
+    assert lrc.readItem("c") == 12
+
+
+def test_repeat():
+    lrc = lruCache(max_size=2)
+    for i in range(5):
+        lrc.writeItem("a", 10)
+        lrc.writeItem("b", 11)
+        lrc.writeItem("c", 12)
     with pytest.raises(KeyError):
         assert lrc.readItem("a") == 10
     assert lrc.readItem("b") == 11
