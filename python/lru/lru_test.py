@@ -6,4 +6,4 @@ def test_double_link():
     for i in range(10):
         dl.insertAtHead(i)
     for i in range(10):
-        pass #assert dl.popFromTail() == i
+        assert dl.popFromTail() == i
