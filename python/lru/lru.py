@@ -15,6 +15,8 @@ class doubleLink(object):
     
     def insertAtHead(self, value):
         new_head = Node(value, self.head, None)
+        if self.head is not None:
+            self.head.previous = new_head
         self.head = new_head
         if self.tail is None:
             self.tail = self.head
