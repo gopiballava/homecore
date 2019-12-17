@@ -4,6 +4,6 @@ cherrypy
 python-forecastio
 flake8>=3.7.5
 alexandra
-# This is necessary for *reasons*
-cryptography<2.2
+# This previously needed to be <2.2
+cryptography>=2.3
 recordclass
