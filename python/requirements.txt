@@ -7,3 +7,4 @@ alexandra
 # This previously needed to be <2.2
 cryptography>=2.3
 recordclass
+Zope
