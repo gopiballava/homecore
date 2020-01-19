@@ -7,7 +7,10 @@ from flask import Flask, render_template
 
 from flask_ask import Ask, statement, question, session, context, version
 
+<<<<<<< HEAD
 from ask_sdk_model.services.reminder_management.reminder_management_service_client import ReminderManagementServiceClient
+=======
+>>>>>>> 77e968bfaf731a23d072818f9863a0593a881c91
 from ask_sdk_model.services.api_configuration import ApiConfiguration
 from ask_sdk_model.services.api_client import ApiClient
 
@@ -18,6 +21,7 @@ app = Flask(__name__)
 
 ask = Ask(app, "/")
 
+<<<<<<< HEAD
 #log = logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 logging.basicConfig(level=logging.INFO)
 
@@ -87,6 +91,14 @@ def new_game():
 #     logging.info("Request ID: {}".format(request.requestId))
 #     logging.info("Request Type: {}".format(request.type))
 #     logging.info("Request Timestamp: {}".format(request.timestamp))
+=======
+# log = logging.getLogger("flask_ask").setLevel(logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
+
+
+@ask.launch
+def new_game():
+>>>>>>> 77e968bfaf731a23d072818f9863a0593a881c91
     logging.info("Session New?: {}".format(session.new))
     logging.info("User ID: {}".format(session.user.userId))
     logging.info("Alexa Version: {}".format(version))
@@ -97,6 +109,7 @@ def new_game():
     pprint.pprint(context)
     print("User: {}".format(context.System.user))
     print("API: {}".format(context.System.apiAccessToken))
+<<<<<<< HEAD
 #THis workds    test_req()
 #     test_create()
 #     logging.info("Consent Token: {}".format(context.System.user.permissions.consentToken))
@@ -121,12 +134,17 @@ def new_game():
 # #     logging.info("Device ID: {}".format(context.System.device.deviceId))
 # #     logging.info("Consent Token: {}".format(context.System.user.permissions.consentToken))
 #     return question("I think you said {}".format(first))
+=======
+    return question("Welcome to lefotver label. First item?")
+
+>>>>>>> 77e968bfaf731a23d072818f9863a0593a881c91
 
 @ask.intent("GlobalIntent", convert={"item": str})
 def main_intent(item):
     print("Item was: {}".format(item))
     print("Access token: {}".format(context.System.apiAccessToken))
     pprint.pprint(context)
+<<<<<<< HEAD
     
 #This workds    test_req()
     return question("I think you said {}".format(item))
@@ -157,18 +175,29 @@ def main_intent(item):
 #     else:
 #         msg = render_template('lose')
 #     return statement(msg)
+=======
+    return question("I think you said {}".format(item))
+
+>>>>>>> 77e968bfaf731a23d072818f9863a0593a881c91
 
 @ask.session_ended
 def session_ended():
     logging.info("Session ended!")
+<<<<<<< HEAD
 #     logging.info("Request ID: {}".format(request.requestId))
 #     logging.info("Request Type: {}".format(request.type))
 #     logging.info("Request Timestamp: {}".format(request.timestamp))
+=======
+>>>>>>> 77e968bfaf731a23d072818f9863a0593a881c91
     logging.info("Session New?: {}".format(session.new))
     logging.info("User ID: {}".format(session.user.userId))
     logging.info("Alexa Version: {}".format(version))
     logging.info("Device ID: {}".format(context.System.device.deviceId))
+<<<<<<< HEAD
 #     logging.info("Consent Token: {}".format(context.System.user.permissions.consentToken))
+=======
+    return question("I think we are done!")
+>>>>>>> 77e968bfaf731a23d072818f9863a0593a881c91
     return "{}", 200
 
 if __name__ == '__main__':
