@@ -5,4 +5,3 @@ import pprint
 
 def test_local_forecast():
     pprint.pprint(get_current())
-

@@ -110,11 +110,10 @@ skill_adapter = SkillAdapter(
 
 skill_adapter.register(app=app, route="/")
 
-#@app.route("/")
-#def invoke_skill():
+# @app.route("/")
+# def invoke_skill():
 #    print("invokte_skill")
 #    return skill_adapter.dispatch_request()
 
 if __name__ == '__main__':
-    app.run(debug=True,port=8050)
-
+    app.run(debug=True, port=8050)

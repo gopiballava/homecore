@@ -1,7 +1,5 @@
 from .nlp import is_starch
 
-import pprint
-
 
 def test_is_starch():
     assert is_starch("rice")

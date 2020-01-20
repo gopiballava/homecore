@@ -14,4 +14,3 @@ def get_current():
     fio = forecastio.load_forecast(FORECAST_API_KEY, HOME_LAT, HOME_LONG)
     now = fio.currently()
     return now.d
-

@@ -30,4 +30,3 @@ def is_starch(food_name):
     print(STARCH_LIST)
     print(food_name, matches)
     return max(matches) > 80
-

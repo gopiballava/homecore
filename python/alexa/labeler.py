@@ -5,10 +5,11 @@ YES_WORDS = ["yes", "correct", "yup", "definitely"]
 
 NO_WORDS = ["no", "nope", "incorrect", "wrong"]
 
+
 class Labeler(object):
     def __init__(self):
         self.potential_food = None
-    
+
     def get_intro_statement(self):
         return question("Welcome to leftover printer. First item?")
 
@@ -35,20 +36,19 @@ class Labeler(object):
                 return question("Cancelled. Next item?")
             else:
                 return self._gen_confirmation(self.potential_food)
-                
-    
+
     def _gen_confirmation(self, potential_food):
         """
         Generate a confirmation question - asks if the food item was correctly identified
         """
         return question("{}, correct?".format(potential_food))
-        
+
     def _print_label(self, potential_food):
         """
         Actually print out the label
         """
         pass
-    
+
     def _is_yes(self, word):
         """
         Determine if word means "yes", so we can go ahead and print the label.

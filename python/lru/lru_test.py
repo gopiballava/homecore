@@ -21,7 +21,7 @@ def test_double_link_move():
     for i in (0, 1, 3, 4, 2):
         assert dl.popFromTail() == i
     assert dl.popFromTail() is None
-    
+
     dl = doubleLink()
     added = []
     for i in range(5):
@@ -30,7 +30,7 @@ def test_double_link_move():
     for i in (0, 1, 2, 3, 4):
         assert dl.popFromTail() == i
     assert dl.popFromTail() is None
-    
+
     dl = doubleLink()
     added = []
     for i in range(5):
