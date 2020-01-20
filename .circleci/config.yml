@@ -55,7 +55,7 @@ jobs:
             python -m pytest --ignore-glob=**/alexa/**
             pytest --cov=. --ignore-glob=**/alexa/**
             bash <(curl -s https://codecov.io/bash)
-            coverage report --fail-under=90 --omit="venv/*"
+            coverage report --fail-under=90 --omit="venv/*","alexa/*"
 
       - store_artifacts:
           path: test-reports
