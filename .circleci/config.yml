@@ -8,8 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
-      # - image: circleci/python:3.6.1
-      - image: circleci/python:2.7.16
+      - image: circleci/python:3.6.1
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -34,7 +33,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            python2 -m venv venv
+            python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
 
@@ -52,10 +51,11 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            python -m pytest
-            pytest --cov=.
+            # The alexa stuff is python2 only.
+            python -m pytest --ignore-glob=alexa/**
+            pytest --cov=. --ignore-glob=alexa/**
             bash <(curl -s https://codecov.io/bash)
-            coverage report --fail-under=90 --omit="venv/*"
+            coverage report --fail-under=90 --omit="venv/*","alexa/*"
 
       - store_artifacts:
           path: test-reports
