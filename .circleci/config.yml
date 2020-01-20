@@ -53,7 +53,7 @@ jobs:
             . venv/bin/activate
             # The alexa stuff is python2 only.
             python -m pytest --ignore-glob=**/alexa/**
-            pytest --cov=.
+            pytest --cov=. --ignore-glob=**/alexa/**
             bash <(curl -s https://codecov.io/bash)
             coverage report --fail-under=90 --omit="venv/*"
 
