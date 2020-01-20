@@ -51,7 +51,8 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            python -m pytest
+            # The alexa stuff is python2 only.
+            python -m pytest --ignore=alexa/
             pytest --cov=.
             bash <(curl -s https://codecov.io/bash)
             coverage report --fail-under=90 --omit="venv/*"

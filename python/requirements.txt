@@ -8,3 +8,4 @@ alexandra
 cryptography>=2.3
 recordclass
 Zope
+fuzzywuzzy
