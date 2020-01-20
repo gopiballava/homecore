@@ -10,3 +10,4 @@ recordclass
 Zope
 fuzzywuzzy
 inflect
+flask-ask-sdk
