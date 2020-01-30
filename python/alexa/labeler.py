@@ -1,5 +1,5 @@
 
-from flask_ask import statement, question
+import flask_ask
 
 YES_WORDS = ["yes", "correct", "yup", "definitely"]
 
@@ -11,7 +11,7 @@ class Labeler(object):
         self.potential_food = None
 
     def get_intro_statement(self):
-        return question("Welcome to leftover printer. First item?")
+        return flask_ask.question("Welcome to leftover printer. First item?")
 
     def handle_statement(self, statement):
         """
@@ -22,7 +22,7 @@ class Labeler(object):
         """
         if self.potential_food is None:
             if self._is_yes(statement) or self._is_no(statement):
-                return question("Item to add?")
+                return flask_ask.question("Item to add?")
             self.potential_food = statement
             return self._gen_confirmation(statement)
         else:
@@ -30,18 +30,19 @@ class Labeler(object):
                 # We should print the label!
                 self._print_label(self.potential_food)
                 self.potential_food = None
-                return question("Printing label. Next item?")
+                return flask_ask.question("Printing label. Next item?")
             elif self._is_no(statement):
                 self.potential_food = None
-                return question("Cancelled. Next item?")
+                return flask_ask.question("Cancelled. Next item?")
             else:
                 return self._gen_confirmation(self.potential_food)
 
     def _gen_confirmation(self, potential_food):
         """
-        Generate a confirmation question - asks if the food item was correctly identified
+        Generate a confirmation question - asks if the food item was
+        correctly identified
         """
-        return question("{}, correct?".format(potential_food))
+        return flask_ask.question("{}, correct?".format(potential_food))
 
     def _print_label(self, potential_food):
         """
@@ -57,6 +58,7 @@ class Labeler(object):
 
     def _is_no(self, word):
         """
-        Determine if the word means "no", we don't agree that this label should be printed.
+        Determine if the word means "no", we don't agree that this label
+        should be printed.
         """
         return word in NO_WORDS
