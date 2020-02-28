@@ -1,0 +1,11 @@
+{
+  "bar": 42,
+  "foo": "",
+  "Moof": false,
+  "Foo": [
+    "Array",
+    "Element",
+    "Element"
+  ],
+  "useless": null
+}

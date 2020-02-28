@@ -1,0 +1,10 @@
+[Unit]
+Description=Alexa label service.
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /home/automation/homecore/python/alexa/label_flask.py
+
+[Install]
+WantedBy=multi-user.target
+

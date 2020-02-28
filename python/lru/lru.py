@@ -8,7 +8,7 @@ class doubleLink(object):
     def __init__(self):
         self.head = None
         self.tail = None
-    
+
     def insertAtHead(self, value):
         """
         Creates a new node and inserts it at the head of our
@@ -39,7 +39,7 @@ class doubleLink(object):
             node.next = self.head
             self.head.previous = node
             self.head = node
-        
+
     def popFromTail(self):
         """
         Return the value stored in the tail node of the list,
@@ -56,7 +56,7 @@ class doubleLink(object):
         else:
             self.tail = self.tail.previous
         return retv
-        
+
 
 class lruCache(object):
     def __init__(self, max_size=10):
@@ -76,9 +76,8 @@ class lruCache(object):
             if len(self.data) > self.max_size:
                 oldest_key = self.dll.popFromTail()
                 del self.data[oldest_key]
-    
+
     def readItem(self, k):
         (node, v) = self.data[k]
         self.dll.moveToHead(node)
         return v
-            
