@@ -8,6 +8,7 @@ def test_is_starch():
     assert is_starch("mashed potatoes")
     assert is_starch("english muffin")
     assert is_starch("fried rice")
+    assert is_starch("chicken fried rice")
     assert is_starch("spaghetti bolognese")
     assert not is_starch("palak paneer")
     assert not is_starch("hamburger")
