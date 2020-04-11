@@ -6,7 +6,7 @@ data_dir = "/tmp/server1"
 
 server {
   enabled          = true
-  bootstrap_expect = 3
+  bootstrap_expect = 2
 
   # This is the IP address of the first server provisioned
   server_join {
