@@ -1,11 +1,9 @@
 
 import logging
 
-from random import randint
+from flask import Flask
 
-from flask import Flask, render_template
-
-from flask_ask import Ask, statement, question, session, context, version
+from flask_ask import Ask, question, session, context, version
 
 from labeler import Labeler
 
