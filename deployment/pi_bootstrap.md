@@ -23,4 +23,4 @@
 - https://github.com/bltavares/nomad/releases
 - Trying with nomad-0.9
 - `~/nomad agent -config server.hcl`
-
+- `nomad agent -config client1.hcl`
