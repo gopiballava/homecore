@@ -24,3 +24,14 @@
 - Trying with nomad-0.9
 - `~/nomad agent -config server.hcl`
 - `nomad agent -config client1.hcl`
+
+in rc.local:
+
+cd /home/automation/homecore/deployment/nomad/
+./pi_boot.sh &
+
+## Hostnames
+- landing-front-door-camera-pi 192.168.88.66 armv7l nomad 0.11
+- freezer-pi 192.168.88.62 armv7l nomad 0.11
+-
+
