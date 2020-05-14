@@ -9,7 +9,7 @@ log_file = "/home/automation/homecore/deployment/nomad/logs/server.log"
 
 server {
   enabled          = true
-  bootstrap_expect = 2
+  bootstrap_expect = 1
 
   # This is the IP address of the first server provisioned
   server_join {

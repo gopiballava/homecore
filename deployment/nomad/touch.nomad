@@ -2,7 +2,7 @@ job "batch_touch" {
 
 datacenters = ["bv1"]
 
-type = "batch"
+type = "service"
 
 group "cache" {
     count = 1
@@ -27,8 +27,8 @@ group "cache" {
       }
    
        config {
-       command = "/usr/bin/touch"
-       args = ["/tmp/success"]
+       command = "/home/automation/homecore/deployment/nomad/touchloop.sh"
+       args = []
             }
         }
 }
