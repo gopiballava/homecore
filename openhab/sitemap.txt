@@ -1,0 +1,28 @@
+sitemap our_home label="Our Home" {
+    Frame label="Ground Floor" icon="groundfloor" {
+        Group item=GF_GuestRoom
+        Group item=GF_Kitchen
+        Group item=GF_LivingDining
+    }
+
+    Frame label="Outside" icon="garden" {
+    }
+
+    Frame label="Top Floor" icon="none" {
+        Group item=T_Bedroom
+        Group item=T_SewingRoom
+    }
+
+    Frame label="Krislair" icon="none" {
+        Group item=K_Bedroom
+    }
+
+    Frame label="Basement" icon="none" {
+    }
+
+    Frame {
+        Text label="Light" icon="light" {
+            Default item=GF_Kitchen_Light label="Kitchen"
+        }
+    }
+}
