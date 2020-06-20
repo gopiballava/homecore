@@ -1,0 +1,19 @@
+Group    Home               "Our Home"               <house>                                ["Building"]
+
+Group    GF                 "Ground Floor"           <groundfloor>   (Home)                 ["GroundFloor"]
+Group    OU                 "Outside"                <garden>        (Home)                 ["Outdoor"]
+Group    T                  "Top Floor"              <none>          (Home)
+Group    K                  "Krislair"               <none>          (Home)
+Group    B                  "Basement"               <none>          (Home)
+
+Group    GF_GuestRoom       "Guest Room"             <parents_4_3>   (Home, GF)             ["Room"]
+Group    GF_Kitchen         "Kitchen"                <kitchen>       (Home, GF)             ["Kitchen"]
+Group    GF_LivingDining    "Living & Dining Room"   <sofa>          (Home, GF)             ["LivingRoom"]
+Group    T_Bedroom          "Bedroom"                <bedroom>       (Home, T)              ["Bedroom"]
+Group    T_SewingRoom       "Sewing Room"            <none>          (Home, T)
+Group    K_Bedroom          "Bedroom"                <bedroom>       (Home, K)              ["Bedroom"]
+
+Switch   GF_Kitchen_Light   "Light"                  <light>         (GF_Kitchen, gLight)   ["Lighting", "Switchable"]   {channel=""}
+
+Group:Switch:OR(ON, OFF)   gLight   "Light"   <light>   (Home)   ["Lighting", "Switchable"]
+
