@@ -8,6 +8,7 @@ import persistent.list
 import transaction
 from BTrees.OOBTree import TreeSet, BTree
 
+
 # @total_ordering
 class Node(persistent.Persistent):
 
@@ -26,6 +27,7 @@ class Node(persistent.Persistent):
 #         return self.title
 #     def __lt__(self, other):
 #         return self.__hash__() < other.__hash__()
+
 
 class ESPNode(Node):
     def get_connected_sensors(self):
@@ -53,6 +55,7 @@ class Edge(persistent.Persistent):
 
 #   def connect_nodes(self, from, to):
 
+
 def make_storage():
     storage = ZODB.FileStorage.FileStorage('mydata.fs')
 #     storage = None
@@ -60,8 +63,17 @@ def make_storage():
     connection = db.open()
     return connection
 
-def test_write():
-    connection = make_storage()
+
+def test_rw():
+    db = ZODB.DB(None)
+    connection = db.open()
+    cli_write(connection=connection)
+    cli_read(connection=connection)
+
+
+def cli_write(connection=None):
+    if connection is None:
+        connection = make_storage()
     root = connection.root
     root.nodes = BTree()
 
@@ -75,14 +87,17 @@ def test_write():
 #     esp.from_edges.append(water_sensor)
     transaction.commit()
 
-def test_read():
-    connection = make_storage()
+
+def cli_read(connection=None):
+    if connection is None:
+        connection = make_storage()
     root = connection.root
     print(root.nodes['first_esp'])
     for edge in root.nodes['first_esp'].from_edges:
         print("  Edge: {} to {}".format(edge, edge.to_node))
 #     print(dir(connection))
 #     print(connection.book)
+
 
 class Account(persistent.Persistent):
 
@@ -99,9 +114,9 @@ class Account(persistent.Persistent):
 
 if __name__ == '__main__':
     if sys.argv[1] == 'w':
-        test_write()
+        cli_write()
     elif sys.argv[1] == 'r':
-        test_read()
+        cli_read()
     else:
         print("Usage: {} w | r".format(sys.argv[0]))
         print("w writes data to the store on disk, r reads it.")
