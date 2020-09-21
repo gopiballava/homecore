@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+   " http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	
+<html xmlns = "http://www.w3.org/1999/xhtml" lang = "en" xml:lang = "en">
+   <head>
+      <title>AJAX with jQuery and cherrypy</title>
+      <meta http-equiv = "Content-Type" content = "text/html; charset = utf-8" />
+      <script type = "text/javascript" src = "/html/jquery-3.5.1.min.js"></script>
+		
+      <script type = "text/javascript">
+         $(function() {
+         
+            // When the testform is submitted...
+            $("#formtest").submit(function() {
+         
+               // post the form values via AJAX...
+               $.post('/submit', {name: $("#name").val()}, function(data) {
+         
+                  // and set the title with the result
+                  $("#title").html(data['title']) ;
+               });
+               return false;
+            });
+         });
+         $(document).ready(function(){
+             
+             function refresh_all() {
+             	$(".refreshable").each(function() {
+             		$(this).load("/param_div/" + $(this).prop('id'), "",
+             		    function (responseText, textStatus, req) {
+							if (textStatus == "error") {
+								console.log("oooops");
+								$(this).html('<hr>Fail');
+								return "oh noes!!!!";
+							}
+						}
+					);
+             	});
+// 				 $("#refreshme").load("/param_div/refreshme", "");
+			 }
+			 
+			 setInterval(refresh_all, 2300);
+		 });
+      </script>
+		
+   </head>
+	
+   <body>
+      <h1 id = "title">What's your name?</h1>
+      <form id = "formtest" action = "#" method = "post">
+         <p>
+            <label for = "name">Name:</label>
+            <input type = "text" id = "name" /> <br />
+            <input type = "submit" value = "Set" />
+         </p>
+      </form>
+      <div id="refreshme" class="refreshable">Waiting...</div>
+      <div id="fubar" class="refreshable">Waiting...</div>
+   </body>
+	
+</html>
