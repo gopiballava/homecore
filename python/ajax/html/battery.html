@@ -36,7 +36,6 @@
 						}
 					);
              	});
-// 				 $("#refreshme").load("/param_div/refreshme", "");
 			 }
 			 
 			 setInterval(refresh_all, 2300);
@@ -54,8 +53,17 @@
             <input type = "submit" value = "Set" />
          </p>
       </form>
-      <div id="refreshme" class="refreshable">Waiting...</div>
-      <div id="fubar" class="refreshable">Waiting...</div>
+      <table border="1">
+      <tr><th>Server Time</th><th>Uptime</th></tr>
+      <tr>
+      <td>
+      <div id="clock" class="refreshable">Waiting...</div>
+      </td>
+      <td>
+      <div id="duration" class="refreshable">Waiting...</div>
+      </td>
+      </tr>
+      </table>
    </body>
 	
 </html>

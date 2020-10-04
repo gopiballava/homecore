@@ -8,6 +8,9 @@ import time
 MEDIA_DIR = os.path.join(os.path.abspath("."), u"html")
 
 class AjaxApp(object):
+   def __init__(self):
+      self._start_time = time.time()
+
    @cherrypy.expose
    def index(self):
       return open(os.path.join(MEDIA_DIR, u'battery.html'))
@@ -21,6 +24,11 @@ class AjaxApp(object):
 
    @cherrypy.expose
    def param_div(self, name):
+       print('name:', name)
+       if name == 'clock':
+          return '{}'.format(time.asctime())
+       elif name == 'duration':
+          return '{} seconds ago'.format(int(time.time() - self._start_time))
        return '<hr>{}<hr>'.format(time.asctime())
 		
 config = {
