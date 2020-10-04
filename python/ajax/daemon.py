@@ -8,28 +8,27 @@ import time
 MEDIA_DIR = os.path.join(os.path.abspath("."), u"html")
 
 class AjaxApp(object):
-   def __init__(self):
-      self._start_time = time.time()
+	def __init__(self):
+		self._start_time = time.time()
 
-   @cherrypy.expose
-   def index(self):
-      return open(os.path.join(MEDIA_DIR, u'battery.html'))
+	@cherrypy.expose
+	def index(self):
+		return open(os.path.join(MEDIA_DIR, u'battery.html'))
 
-   @cherrypy.expose
-   @cherrypy.tools.json_out()
-   def submit(self, name):
-      cherrypy.response.headers['Content-Type'] = 'application/json'
-      return dict(title="Hello, %s" % name)
-#       return simplejson.dumps(dict(title="Hello, %s" % name))
+	@cherrypy.expose
+	@cherrypy.tools.json_out()
+	def submit(self, name):
+		cherrypy.response.headers['Content-Type'] = 'application/json'
+		return dict(title="Hello, %s" % name)
+#		  return simplejson.dumps(dict(title="Hello, %s" % name))
 
-   @cherrypy.expose
-   def param_div(self, name):
-       print('name:', name)
-       if name == 'clock':
-          return '{}'.format(time.asctime())
-       elif name == 'duration':
-          return '{} seconds ago'.format(int(time.time() - self._start_time))
-       return '<hr>{}<hr>'.format(time.asctime())
+	@cherrypy.expose
+	def param_div(self, name):
+		if name == 'clock':
+			return '{}'.format(time.asctime())
+		elif name == 'duration':
+			return '{} seconds ago'.format(int(time.time() - self._start_time))
+		return '<hr>{}<hr>'.format(time.asctime())
 		
 config = {
 	'/html':
