@@ -4,6 +4,9 @@ log_level = "DEBUG"
 # Setup data dir
 data_dir = "/tmp/server2"
 
+datacenter = "bv1"
+log_file = "/home/automation/homecore/deployment/nomad/logs/server.log"
+
 server {
   enabled          = true
   bootstrap_expect = 1

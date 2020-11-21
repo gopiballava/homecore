@@ -1,0 +1,29 @@
+[
+  {
+    "id": "Light",
+    "name": "Light",
+    "row": 0,
+    "col": 0,
+    "tile": {
+      "backdrop_iconset": "eclipse-smarthome-classic",
+      "backdrop_icon": "light",
+      "icon_size": 32
+    },
+    "widgets": [
+      {
+        "item": "GF_Kitchen_Light",
+        "name": "Kitchen",
+        "sizeX": 2,
+        "sizeY": 2,
+        "type": "switch",
+        "row": 0,
+        "col": 0,
+        "font_size": "24",
+        "useserverformat": true,
+        "iconset": "eclipse-smarthome-classic",
+        "icon": "light",
+        "icon_size": 64
+      }
+    ]
+  }
+]

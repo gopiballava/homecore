@@ -7,11 +7,13 @@ data_dir = "/tmp/client1"
 # Give the agent a unique name. Defaults to hostname
 #name = "client1"
 
+log_file = "/home/automation/homecore/deployment/nomad/logs/client.log"
+datacenter = "bv1"
+
 # Enable the client
 client {
     enabled = true
 
-    datacenter = "bv1"
     # For demo assume we are talking to server1. For production,
     # this should be like "nomad.service.consul:4647" and a system
     # like Consul used for service discovery.
