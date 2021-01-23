@@ -54,7 +54,7 @@ class Edge(persistent.Persistent):
 #   def connect_nodes(self, from, to):
 
 def make_storage():
-    storage = ZODB.FileStorage.FileStorage('mydata.fs')
+    storage = ZODB.FileStorage.FileStorage('/tmp/mydata.fs')
 #     storage = None
     db = ZODB.DB(storage)
     connection = db.open()
