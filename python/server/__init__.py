@@ -1,4 +1,5 @@
 # Files
+"""
 bootstrap.py
 * try...except loads first zipfile, then second? third?
 
@@ -18,3 +19,4 @@ app.zip
 /app/get: 
     mac_address
 
+"""
