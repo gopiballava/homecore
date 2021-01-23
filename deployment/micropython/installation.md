@@ -11,8 +11,16 @@ esptool.py --chip esp32 --port /dev/cu.usbserial-0001 --baud 460800 write_flash 
 
 
 import network
-sta_if = network.WLAN(network.STA_IF); sta_if.active(True)
+sta_if = network.WLAN(network.STA_IF)
+sta_if.active(True)
 sta_if.scan()                             # Scan for available access points
+sta_if.connect('Raccoon', 'grindelwald123')
 sta_if.connect("Puppies", "b33pb33p") # Connect to an AP
 
 sta_if.isconnected()                      # Check for successful connection
+
+sta_if.ifconfig()
+
+import esp32
+import time
+while True: print(esp32.hall_sensor())
