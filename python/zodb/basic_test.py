@@ -64,18 +64,18 @@ def make_storage(filename='mydata.fs'):
 def test_write():
     with tempfile.NamedTemporaryFile() as temp:
         connection = make_storage(temp.name)
-	root = connection.root
-	root.nodes = BTree()
+        root = connection.root
+        root.nodes = BTree()
 
-	esp = ESPNode("esp8266")
-	root.nodes['first_esp'] = esp
-	water_sensor = Node("water_sensor")
-	root.nodes['water'] = water_sensor
-	e = Edge(esp, water_sensor)
-	print(esp.from_edges)
-	#     root.nodes['wtf'] = e
-	#     esp.from_edges.append(water_sensor)
-	transaction.commit()
+        esp = ESPNode("esp8266")
+        root.nodes['first_esp'] = esp
+        water_sensor = Node("water_sensor")
+        root.nodes['water'] = water_sensor
+        e = Edge(esp, water_sensor)
+        print(esp.from_edges)
+        #     root.nodes['wtf'] = e
+        #     esp.from_edges.append(water_sensor)
+        transaction.commit()
 
 def test_read():
     with tempfile.NamedTemporaryFile() as temp:
