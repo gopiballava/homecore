@@ -77,7 +77,8 @@ def test_write():
         #     esp.from_edges.append(water_sensor)
         transaction.commit()
 
-def test_read():
+# This needs existing data to work!
+def Xtest_read():
     with tempfile.NamedTemporaryFile() as temp:
         connection = make_storage(temp.name)
         root = connection.root
