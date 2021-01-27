@@ -1,5 +1,12 @@
 # Ongoing notes for setting up new Raspberry Pi
 
+## Preparing a basic Pi image
+
+- Use the Raspberry Pi volume creation app
+- Unplug and reconnect flash
+- cp ~/wpa_supplicant.conf /Volumes/boot/.
+- touch /Volumes/boot/ssh
+
 ## Basic bootstrapping
 
 - Use the fancy GUI tool to write a new flash image
