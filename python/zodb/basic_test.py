@@ -7,6 +7,7 @@ import persistent
 import persistent.list
 import transaction
 from BTrees.OOBTree import TreeSet, BTree
+import tempfile
 
 # @total_ordering
 class Node(persistent.Persistent):
@@ -53,34 +54,36 @@ class Edge(persistent.Persistent):
 
 #   def connect_nodes(self, from, to):
 
-def make_storage():
-    storage = ZODB.FileStorage.FileStorage('/tmp/mydata.fs')
+def make_storage(filename='mydata.fs'):
+    storage = ZODB.FileStorage.FileStorage(filename)
 #     storage = None
     db = ZODB.DB(storage)
     connection = db.open()
     return connection
 
 def test_write():
-    connection = make_storage()
-    root = connection.root
-    root.nodes = BTree()
+    with tempfile.NamedTemporaryFile() as temp:
+        connection = make_storage(temp.name)
+	root = connection.root
+	root.nodes = BTree()
 
-    esp = ESPNode("esp8266")
-    root.nodes['first_esp'] = esp
-    water_sensor = Node("water_sensor")
-    root.nodes['water'] = water_sensor
-    e = Edge(esp, water_sensor)
-    print(esp.from_edges)
-#     root.nodes['wtf'] = e
-#     esp.from_edges.append(water_sensor)
-    transaction.commit()
+	esp = ESPNode("esp8266")
+	root.nodes['first_esp'] = esp
+	water_sensor = Node("water_sensor")
+	root.nodes['water'] = water_sensor
+	e = Edge(esp, water_sensor)
+	print(esp.from_edges)
+	#     root.nodes['wtf'] = e
+	#     esp.from_edges.append(water_sensor)
+	transaction.commit()
 
 def test_read():
-    connection = make_storage()
-    root = connection.root
-    print(root.nodes['first_esp'])
-    for edge in root.nodes['first_esp'].from_edges:
-        print("  Edge: {} to {}".format(edge, edge.to_node))
+    with tempfile.NamedTemporaryFile() as temp:
+        connection = make_storage(temp.name)
+        root = connection.root
+        print(root.nodes['first_esp'])
+        for edge in root.nodes['first_esp'].from_edges:
+            print("  Edge: {} to {}".format(edge, edge.to_node))
 #     print(dir(connection))
 #     print(connection.book)
 
