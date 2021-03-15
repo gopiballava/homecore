@@ -3,13 +3,13 @@ import serial
 import time
 import traceback
 
-DEFAULT_FEED = 20
+DEFAULT_FEED = 10
 
 
 # G92 x0 y0 z0\n')
 # G1X-0.08Y0.08F80\n')
 
-FAKE = True
+FAKE = False
 
 class TransmitGcode:
     def __init__(self, port='/dev/tty.usbmodem141401'):
@@ -29,7 +29,7 @@ class TransmitGcode:
         if FAKE:
             print(f'{cmd_string}')        
         else:
-            self.serial.write(f'{cmd_string}\r\n'.encode('UTF-8'))
+            self.serial.write(f'{cmd_string}\n'.encode('UTF-8'))
             print(f'Sent {cmd_string}')
             if multiple:
                 response = self.serial.readlines()
@@ -71,8 +71,8 @@ class TransmitGcode:
 #             self._send_command('$1=255')
             pass
         else:
-            self._send_command('$1=252')
-#             pass
+#             self._send_command('$1=252')
+            pass
 
 PROXIMAL_ARM = 100
 DISTAL_ARM = 134
@@ -103,7 +103,7 @@ class ScaraControl:
     def set_pen(self, pen_state):
         self.tx.set_always_on(pen_state)
 
-DRAW_DELAY = 0.01
+DRAW_DELAY = 0.0
 if __name__ == '__main__':
     sc = ScaraControl()
     try:
