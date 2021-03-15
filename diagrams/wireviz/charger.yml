@@ -1,0 +1,93 @@
+templates:
+    - &template_double_sensor_grounded
+        type: Three pin whatever
+        subtype: female
+        pincount: 3
+    - &template_double_wire_grounded
+#        type: Hello
+        wirecount: 3
+#        length: 1
+        color_code: IEC
+#        show_name: False
+        show_wirecount: False
+
+    - &template_dc_power_bipolar
+        wirecount: 2
+        colors: [RD, BK]
+
+    - &template_dc_power_plus
+        wirecount: 1
+        colors: [RD]
+
+    - &template_dc_power_ground
+        wirecount: 2
+        colors: [RD, BK]
+
+    - &template_esp32
+        type: ESP32 Microcontroller
+        pins: [d1, d2, d4, d5, 33VCC, 5VCC, GND]
+#        pincount: 8
+
+    - &template_current_esp32
+        pins: [CUR, V_SENSE, 33VCC, GND]
+
+    - &template_current_sensor_huge
+        type: TYFOO current sensor
+        pins: [I+, I-, VCC, SIG, GND, EN]
+
+    - &template_aims_converter
+        type: AIMS Power Converter
+        pins: [V+, GND]
+
+    - &template_rv_battery
+        type: Flooded lead acid
+        pins: [V+, GND]
+
+connectors:
+    CHARGER:
+        <<: *template_aims_converter
+    CURSENSE:
+        <<: *template_current_sensor_huge
+    BAT:
+        <<: *template_rv_battery
+    SENSE_ESP32:
+        <<: *template_current_esp32
+#        show_name: False
+    CHASSIS:
+        pins: [GND]
+
+    
+cables:
+    W1:
+        <<: *template_dc_power_plus
+#    W2:
+#        <<: *template_dc_power_plus
+    W3:
+        <<: *template_dc_power_ground
+    W4:
+        wirecount: 4
+        colors: [YE, BU, RD, BK]
+        show_wirecount: False
+#        show_wirenumbers: False
+#       show_name: False
+        show_connector_names: False
+#        category: bundle
+#        pins: [CUR, V_SENSE, 33VCC, GND]
+
+connections:
+    -
+        - CHARGER: [V+]
+        - W1: [1]
+        - CURSENSE: [I+]
+    -
+        - CURSENSE: [I-]
+        - W3: [1]
+        - BAT: [V+]
+    -
+        - CHARGER: [GND]
+        - W3: [2]
+        - CHASSIS: [GND]
+    -
+        - SENSE_ESP32: [CUR, V_SENSE, 33VCC, GND]
+        - W4: [1,2,3,4]
+        - CURSENSE: [SIG, I+, VCC, GND]
