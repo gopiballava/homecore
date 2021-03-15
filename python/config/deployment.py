@@ -5,7 +5,8 @@ if __name__ == '__main__':
 	conf.read('example_deploy.ini')
 	print(conf)
 	print(conf.sections)
-	for section in conf.sections()import cherrypy
+# 	for section in conf.sections()
+import cherrypy
 import webbrowser
 import os
 import simplejson
@@ -29,12 +30,13 @@ config = {'/media':
 }
 			
 def open_page():
-webbrowser.open("http://127.0.0.1:8080/")
-cherrypy.engine.subscribe('start', open_page)
-cherrypy.tree.mount(AjaxApp(), '/', config=config)
-cherrypy.engine.start()f:
-		print(section)
-		print(dir(section))
+    webbrowser.open("http://127.0.0.1:8080/")
+    cherrypy.engine.subscribe('start', open_page)
+    cherrypy.tree.mount(AjaxApp(), '/', config=config)
+    cherrypy.engine.start()
+#     f:
+    print(section)
+    print(dir(section))
 """
 import configparser
 conf = configparser.ConfigParser()
