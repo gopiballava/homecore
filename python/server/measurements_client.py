@@ -13,7 +13,7 @@ class MeasurementsClient:
     def _send_reading(self, reading_type, oid, value):
         response = urequests.get('http://{}:{}/new_reading/{}/{}/{}'.format(SERVER_IP, SERVER_PORT, reading_type, oid, value))
         if response.status_code != 200:
-            print('http error code {}, reason {}'.format(response.status_code, response.reason)
+            print('http error code {}, reason {}'.format(response.status_code, response.reason))
 
 
 class VoltageMeasurement(MeasurementClient):
