@@ -28,7 +28,7 @@ class VoltageMeasurement(MeasurementsClient):
     def _convert_reading(self, ADC_value):
         adc_fraction = ADC_value / self._full_scale
         raw_voltage = self._full_scale_voltage * adc_fraction
-        return raw_voltage * self._divider_ratio
+        return raw_voltage / self._divider_ratio
     
     def send_reading(self, ADC_value):
         self._send_reading('voltage', self._oid, self._convert_reading(ADC_value))
