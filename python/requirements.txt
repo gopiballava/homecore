@@ -12,4 +12,5 @@ Zope
 fuzzywuzzy
 inflect
 python-Levenshtein
-micropython-urequests
+# Why is setup.py not found?
+#micropython-urequests
