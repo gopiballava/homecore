@@ -12,3 +12,4 @@ Zope
 fuzzywuzzy
 inflect
 python-Levenshtein
+micropython-urequests
