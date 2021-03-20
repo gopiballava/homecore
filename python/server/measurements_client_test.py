@@ -3,7 +3,7 @@ import pytest
 from .measurements_client import VoltageMeasurement
 
 def test_voltage_calculation(mocker):
-    mocker.patch('urequests.get')
+    # mocker.patch('urequests.get')
     vm = VoltageMeasurement(full_scale_voltage=1,
         bit_count=16,
         divider_ratio=0.1,
