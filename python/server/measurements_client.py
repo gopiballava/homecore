@@ -17,7 +17,7 @@ class MeasurementsClient:
         #    print('http error code {}, reason {}'.format(response.status_code, response.reason))
 
 
-class VoltageMeasurement(MeasurementClient):
+class VoltageMeasurement(MeasurementsClient):
     def __init__(self, full_scale_voltage=None, bit_count=None, divider_ratio=None, oid=None):
         self._full_scale_voltage = full_scale_voltage
         self._bit_count = bit_count
