@@ -3,6 +3,8 @@ import pytest
 from .measurements_client import VoltageMeasurement
 
 CLOSE_ENOUGH = 0.0001
+
+
 def test_voltage_calculation(mocker):
     # mocker.patch('urequests.get')
     vm = VoltageMeasurement(full_scale_voltage=1,
