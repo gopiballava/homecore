@@ -11,8 +11,8 @@ reading_names = Table(
     Column('name', Integer),
 )
 
-reading_values = Table(
-    'reading_values',
+reading_values_integer = Table(
+    'reading_values_integer',
     meta,
     Column('id', Integer, primary_key=True),
     Column('reading_name_id', Integer),
@@ -20,9 +20,18 @@ reading_values = Table(
     Column('timestamp', DateTime),
 )
 
+reading_values_power = Table(
+    'reading_values_power',
+    meta,
+    Column('id', Integer, primary_key=True),
+    Column('reading_name_id', Integer),
+    Column('voltage_value', Integer),
+    Column('timestamp', DateTime),
+)    
+
 class reading_manager:
     def __init__(self):
-        self.engine = create_engine('postgresql://automation:Xiekalem3!@localhost/measurements')
+        self.engine = create_engine('sqlite://')
         self.conn = self.engine.connect()
         Session = sessionmaker(bind = self.engine)
         self.session
