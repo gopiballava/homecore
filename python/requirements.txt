@@ -15,3 +15,4 @@ inflect
 python-Levenshtein
 # Why is setup.py not found?
 #micropython-urequests
+SQLAlchemy
