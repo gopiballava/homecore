@@ -14,7 +14,7 @@ FAKE = False
 class TransmitGcode:
     def __init__(self, port='/dev/tty.usbmodem141401'):
         self.x = 0
-        self.y = 0
+        self.y = -1
         if not FAKE:
             self.serial = serial.Serial(port, 115200, timeout=3)
             time.sleep(2)
@@ -124,9 +124,9 @@ if __name__ == '__main__':
             for i in range(5):
                 sc.set_pos(x + size - i * mult, y)
                 time.sleep(DRAW_DELAY)
-#         _draw_box(60, 60, 5)
-        for i in range(3):
-            _draw_box(30 + i * 7, 60, 3)
+        _draw_box(30, 60, 5)
+#         for i in range(3):
+#             _draw_box(30 + i * 7, 60, 3)
         
 #         _draw_box(60, 90, 10)
 #         _draw_box(100, 20, 5)
@@ -134,7 +134,7 @@ if __name__ == '__main__':
     except:
         traceback.print_exc()
     sc.set_pen(False)
-    sc.set_angles(0, 0)
+    sc.set_angles(0, 90)
     time.sleep(4)
 if False:
     sc.set_angles(90, 0)
