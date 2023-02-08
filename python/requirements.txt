@@ -7,7 +7,7 @@ flake8>=3.7.5
 alexandra
 # This previously needed to be <2.2
 # Locking the version due to weird rust errors
-cryptography==3.3.2
+cryptography==39.0.1
 recordclass
 Zope
 fuzzywuzzy
